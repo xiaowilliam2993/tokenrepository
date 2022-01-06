@@ -12,7 +12,11 @@ namespace TokenRepository.Client
 {
     public partial class TokenRepositoryForm : Form
     {
-        protected TokenBasis QueryEntry { get; set; } = new TokenBasis();
+        protected TokenBasis QueryEntry { get; set; } = new TokenBasis { 
+            ID = "uuu",
+            Token = "Token",
+
+        };
         public TokenRepositoryForm()
         {
             InitializeComponent();
