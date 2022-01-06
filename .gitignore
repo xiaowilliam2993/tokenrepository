@@ -346,3 +346,5 @@ server/src/Margin/logs/
 server/src/Margin/actionlogs/
 server/src/Margin/excel_upload/
 client/package-lock.json
+
+.config/
