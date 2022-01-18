@@ -25,18 +25,19 @@ namespace TokenRepository.Backend.Controllers
             try
             {
                 var data = _dbContext.SecurityLevelBasis
-                .Select(_ => new
-                {
-                    _.SecurityKey,
-                    _.SecurityLevel,
-                    _.SecurityLength,
-                    _.CharacterElement,
-                    _.Remark,
-                    CreateDate = _.CreateDate.Value.ToString(),
-                    ModifyDate = _.ModifyDate.Value.ToString()
-                })
-                .OrderBy(_ => _.SecurityLevel)
-                .ThenBy(_ => _.SecurityKey);
+                    .Select(_ => new
+                    {
+                        _.SecurityKey,
+                        _.SecurityLevel,
+                        _.SecurityLength,
+                        _.CharacterElement,
+                        _.IsValid,
+                        _.Remark,
+                        CreateDate = _.CreateDate.Value.ToString(),
+                        ModifyDate = _.ModifyDate.Value.ToString()
+                    })
+                    .OrderBy(_ => _.SecurityLevel)
+                    .ThenBy(_ => _.SecurityKey);
 
                 return new ApiContext
                 {

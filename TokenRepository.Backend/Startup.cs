@@ -22,7 +22,11 @@ namespace TokenRepository.Backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TokenDbContext>(options => options.UseMySql(Configuration.GetDefaultConnectionString(), MySqlServerVersion.LatestSupportedServerVersion));
+            services.AddDbContext<TokenDbContext>(options =>
+            {
+                options.UseMySql(Configuration.GetDefaultConnectionString(), MySqlServerVersion.LatestSupportedServerVersion,
+                    mySqlOptions => mySqlOptions.EnableStringComparisonTranslations(true));
+            });
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

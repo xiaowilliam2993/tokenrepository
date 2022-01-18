@@ -7,18 +7,19 @@ namespace TokenRepository.Backend.Services.Implement
 {
     public class TokenBasisServiceImpl : ITokenBasisService
     {
-        public IEnumerable<dynamic> ToCollection(IEnumerable<TokenBasis> tokenBases)
+        public IEnumerable<dynamic> ToCollection(IEnumerable<TokenBasis> tokenBases, bool isNeedDecrpty = false)
         {
             return tokenBases.Select(_ => new {
                 _.ID,
-                Token = Encoder.ToDeconding(_.Token),
+                Token = isNeedDecrpty ? Encoder.ToDeconding(_.Token) : _.Token,
                 _.SecurityKey,
                 IsEnabledOfDateTurnOn = _.IsEnabledOfDateTurnOn.Value,
-                EnabledDate = _.EnabledDate.Value.ToString(),
+                EnabledDate = _.EnabledDate.Value.ToStringEx(),
+                _.IsValid,
                 _.Prompt,
                 _.Remark,
-                CreateDate = _.CreateDate.Value.ToString(),
-                ModifyDate = _.ModifyDate.Value.ToString()
+                CreateDate = _.CreateDate.Value.ToStringEx(),
+                ModifyDate = _.ModifyDate.Value.ToStringEx()
             });
         }
 

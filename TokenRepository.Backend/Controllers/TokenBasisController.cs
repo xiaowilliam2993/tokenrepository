@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using TokenRepository.Backend.Data;
 using TokenRepository.Backend.Data.Models;
 using TokenRepository.Backend.Services;
+using TokenRepository.Backend.Utility;
 
 namespace TokenRepository.Backend.Controllers
 {
@@ -55,15 +56,21 @@ namespace TokenRepository.Backend.Controllers
         [HttpGet("{pTokenSearchVal}")]
         public ApiContext Get(string pTokenSearchVal)
         {
+            return Get(pTokenSearchVal, bool.FalseString);
+        }
+
+        [HttpGet("{pTokenSearchVal}/{isNeedDecrypt}")]
+        public ApiContext Get(string pTokenSearchVal, string isNeedDecrypt)
+        {
             try
             {
                 var data = string.IsNullOrEmpty(pTokenSearchVal) ? Enumerable.Empty<TokenBasis>() :
-                    _dbContext.TokenBasis.Where(_ => _.ID.Contains(pTokenSearchVal));
+                    _dbContext.TokenBasis.Where(_ => _.ID.Contains(pTokenSearchVal, StringComparison.CurrentCultureIgnoreCase));
 
                 return new ApiContext
                 {
                     Status = ReturnStatus.Success,
-                    Data = _tokenBasisService.ToCollection(data)
+                    Data = _tokenBasisService.ToCollection(data, ConvertUtil.ToBoolean(isNeedDecrypt))
                 };
             }
             catch (Exception ex)
@@ -95,6 +102,7 @@ namespace TokenRepository.Backend.Controllers
                 {
                     throw new Exception($"TokenBasis by ID '{tokenBasis.ID}' does exists.");
                 }
+                tokenBasis.CreateDate = DateTime.Now;
 
                 _dbContext.TokenBasis.Add(tokenBasis);
                 await _dbContext.SaveChangesAsync();
@@ -165,7 +173,7 @@ namespace TokenRepository.Backend.Controllers
         [HttpDelete("{id}")]
         public async Task<ApiContext> Delete(string id)
         {
-            #region Parameter valiedate
+            #region Parameter validate
             if (string.IsNullOrEmpty(id)) throw new ArgumentNullException(nameof(id));
             #endregion
 
@@ -191,6 +199,50 @@ namespace TokenRepository.Backend.Controllers
             catch(Exception ex)
             {
                 _logger.LogError("Delete TokenBasis occurs an error.", ex);
+                return new ApiContext
+                {
+                    Status = ReturnStatus.Error,
+                    Message = ex.Message
+                };
+            }
+        }
+
+        [HttpGet("getNewToken/{securityKey}")]
+        public async Task<ApiContext> GetNewToken(string securityKey)
+        {
+            #region Parameters validate
+            if (string.IsNullOrEmpty(securityKey)) throw new ArgumentNullException(nameof(securityKey));
+            #endregion
+
+            try
+            {
+                var securityEntry = await _dbContext.SecurityLevelBasis.FindAsync(securityKey);
+                if (securityEntry == null)
+                {
+                    throw new Exception($"The security level basis of {securityKey} is not exists.");
+                }
+                if (!securityEntry.IsValid.HasValue || !securityEntry.IsValid.Value)
+                {
+                    throw new Exception($"The security level basis of {securityKey} is not effective.");
+                }
+
+                string characterElement = securityEntry.CharacterElement;
+                char[] token = new char[securityEntry.SecurityLength];
+                Random random = new();
+                int randomMaxValue = characterElement.Length - 1;
+                for (int i = 0; i < token.Length; i++)
+                {
+                    token[i] = characterElement[random.Next(0, randomMaxValue)];
+                }
+
+                return new ApiContext
+                {
+                    Status = ReturnStatus.Success,
+                    Data = new string(token)
+                };
+            }
+            catch(Exception ex)
+            {
                 return new ApiContext
                 {
                     Status = ReturnStatus.Error,

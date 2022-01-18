@@ -13,6 +13,7 @@ namespace TokenRepository.Backend.Data.Models
         public int SecurityLength { get; set; }
         public string CharacterElement { get; set; }
         public string Remark { get; set; }
+        public bool? IsValid { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? ModifyDate { get; set; }
     }

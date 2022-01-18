@@ -14,6 +14,7 @@ namespace TokenRepository.Backend.Data.Models
         public bool? IsEnabledOfDateTurnOn { get; set; }
         public DateTime? EnabledDate { get; set; }
         public string Prompt { get; set; }
+        public bool? IsValid { get; set; }
         public string Remark { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? ModifyDate { get; set; }

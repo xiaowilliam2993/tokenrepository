@@ -5,7 +5,7 @@ namespace TokenRepository.Backend.Services
 {
     public interface ITokenBasisService
     {
-        IEnumerable<dynamic> ToCollection(IEnumerable<TokenBasis> tokenBases);
+        IEnumerable<dynamic> ToCollection(IEnumerable<TokenBasis> tokenBases, bool isNeedDecrpty = false);
         dynamic ToSingle(IEnumerable<TokenBasis> tokenBases);
     }
 }
