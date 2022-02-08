@@ -1,14 +1,9 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
 using System.Windows.Forms;
 using TokenRepository.Client.Models;
 using TokenRepository.Client.Models.Type;
 using TokenRepository.Client.Utility;
-using TokenRepository.NetworkRequest.Core;
-using TokenRepository.NetworkRequest.Models;
 
 namespace TokenRepository.Client
 {
@@ -40,7 +35,10 @@ namespace TokenRepository.Client
             DataSource.SecurityLevels = GetSecurityLevels();
             databinding.DataSource = DataSource;
 
+            combSecurityLevel.Items.AddRange(DataSource.SecurityLevels);
+
             //combSecurityLevel.DataBindings.Add("SelectedIndex", databinding, "SecurityLevels", false, DataSourceUpdateMode.OnPropertyChanged);
+            tboxTokenID.DataBindings.Add("Text", databinding, "ID", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void lnkGenerateToken_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -85,31 +83,10 @@ namespace TokenRepository.Client
             return cancel;
         }
 
-        private IEnumerable<string> GetSecurityLevels()
+        private string[] GetSecurityLevels()
         {
-            IEnumerable<string> securityLevels = Enumerable.Empty<string>();
-            var apiResponse = NetworkRequestWorker.Get($"{ConfigUtil.GetApiHost}/api/v1/securityLevelBasis/getLevel");
-            if (apiResponse.IsSuccessStatusCode)
-            {
-                var apiContext = apiResponse.GetResultAsGeneric<ApiContext>();
-                if (apiContext.Status == ReturnStatus.Success)
-                {
-                    var data = (JArray)apiContext.Data;
-                    if (data.Count > 0)
-                    {
-                        securityLevels = JsonConvert.DeserializeObject<IEnumerable<string>>(data.ToString());
-                    }
-                }
-                else
-                {
-
-                }
-            }
-            else
-            {
-
-            }
-            return securityLevels;
+            var securityLevels = NetworkUtil.GetList<string>($"{ConfigUtil.GetApiHost}/api/v1/securityLevelBasis/getLevel");
+            return securityLevels.Select(_ => $"{_} Level").ToArray();
         }
     }
 }

@@ -32,40 +32,40 @@ namespace TokenRepository.Client
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TokenDocumentForm));
             this.gboxMaintainMetadata = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lnkGenerateToken = new System.Windows.Forms.LinkLabel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.gboxSecurityStrategy = new System.Windows.Forms.GroupBox();
+            this.lblSecurityKey = new System.Windows.Forms.Label();
+            this.combSecurityKey = new System.Windows.Forms.ComboBox();
+            this.lblSecurityLabel = new System.Windows.Forms.Label();
             this.combSecurityLevel = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTokenLength = new System.Windows.Forms.Label();
+            this.cboxShowOrHideToken = new System.Windows.Forms.CheckBox();
+            this.gboxManagementProperties = new System.Windows.Forms.GroupBox();
+            this.tboxModifyDate = new System.Windows.Forms.TextBox();
+            this.lblModifyDate = new System.Windows.Forms.Label();
+            this.tboxCreateDate = new System.Windows.Forms.TextBox();
+            this.lblCreateDate = new System.Windows.Forms.Label();
+            this.lnkGenerateToken = new System.Windows.Forms.LinkLabel();
+            this.tboxRemark = new System.Windows.Forms.TextBox();
+            this.tboxPrompt = new System.Windows.Forms.TextBox();
+            this.tboxToken = new System.Windows.Forms.TextBox();
+            this.tboxTokenID = new System.Windows.Forms.TextBox();
+            this.lblRemark = new System.Windows.Forms.Label();
             this.lblTokenIDCaption = new System.Windows.Forms.Label();
             this.lblTokenCaption = new System.Windows.Forms.Label();
             this.lblRemarkCaption = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gboxTokenControlStrategy = new System.Windows.Forms.GroupBox();
             this.dtpickerEnabledTime = new System.Windows.Forms.DateTimePicker();
             this.dtpickerEnabledDate = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblEnabledDate = new System.Windows.Forms.Label();
             this.cboxEnabledDateControlStrategy = new System.Windows.Forms.CheckBox();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.databinding = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.gboxMaintainMetadata.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gboxSecurityStrategy.SuspendLayout();
+            this.gboxManagementProperties.SuspendLayout();
+            this.gboxTokenControlStrategy.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.databinding)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // gboxMaintainMetadata
@@ -73,94 +73,147 @@ namespace TokenRepository.Client
             this.gboxMaintainMetadata.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gboxMaintainMetadata.Controls.Add(this.groupBox3);
-            this.gboxMaintainMetadata.Controls.Add(this.label5);
-            this.gboxMaintainMetadata.Controls.Add(this.checkBox2);
-            this.gboxMaintainMetadata.Controls.Add(this.groupBox2);
+            this.gboxMaintainMetadata.Controls.Add(this.gboxSecurityStrategy);
+            this.gboxMaintainMetadata.Controls.Add(this.lblTokenLength);
+            this.gboxMaintainMetadata.Controls.Add(this.cboxShowOrHideToken);
+            this.gboxMaintainMetadata.Controls.Add(this.gboxManagementProperties);
             this.gboxMaintainMetadata.Controls.Add(this.lnkGenerateToken);
-            this.gboxMaintainMetadata.Controls.Add(this.textBox4);
-            this.gboxMaintainMetadata.Controls.Add(this.textBox3);
-            this.gboxMaintainMetadata.Controls.Add(this.textBox2);
-            this.gboxMaintainMetadata.Controls.Add(this.textBox1);
-            this.gboxMaintainMetadata.Controls.Add(this.label1);
+            this.gboxMaintainMetadata.Controls.Add(this.tboxRemark);
+            this.gboxMaintainMetadata.Controls.Add(this.tboxPrompt);
+            this.gboxMaintainMetadata.Controls.Add(this.tboxToken);
+            this.gboxMaintainMetadata.Controls.Add(this.tboxTokenID);
+            this.gboxMaintainMetadata.Controls.Add(this.lblRemark);
             this.gboxMaintainMetadata.Controls.Add(this.lblTokenIDCaption);
             this.gboxMaintainMetadata.Controls.Add(this.lblTokenCaption);
             this.gboxMaintainMetadata.Controls.Add(this.lblRemarkCaption);
-            this.gboxMaintainMetadata.Controls.Add(this.groupBox1);
+            this.gboxMaintainMetadata.Controls.Add(this.gboxTokenControlStrategy);
             this.gboxMaintainMetadata.Location = new System.Drawing.Point(12, 12);
             this.gboxMaintainMetadata.Name = "gboxMaintainMetadata";
-            this.gboxMaintainMetadata.Size = new System.Drawing.Size(555, 619);
+            this.gboxMaintainMetadata.Size = new System.Drawing.Size(555, 578);
             this.gboxMaintainMetadata.TabIndex = 0;
             this.gboxMaintainMetadata.TabStop = false;
             this.gboxMaintainMetadata.Text = "Maintain token metadata";
             // 
-            // label5
+            // gboxSecurityStrategy
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(126, 208);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 17);
-            this.label5.TabIndex = 19;
-            this.label5.Text = "Token length: ";
+            this.gboxSecurityStrategy.Controls.Add(this.lblSecurityKey);
+            this.gboxSecurityStrategy.Controls.Add(this.combSecurityKey);
+            this.gboxSecurityStrategy.Controls.Add(this.lblSecurityLabel);
+            this.gboxSecurityStrategy.Controls.Add(this.combSecurityLevel);
+            this.gboxSecurityStrategy.Location = new System.Drawing.Point(19, 60);
+            this.gboxSecurityStrategy.Name = "gboxSecurityStrategy";
+            this.gboxSecurityStrategy.Size = new System.Drawing.Size(521, 90);
+            this.gboxSecurityStrategy.TabIndex = 20;
+            this.gboxSecurityStrategy.TabStop = false;
+            this.gboxSecurityStrategy.Text = "Security strategy";
             // 
-            // checkBox2
+            // lblSecurityKey
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(129, 156);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(141, 21);
-            this.checkBox2.TabIndex = 5;
-            this.checkBox2.Text = "Show or hide token";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.lblSecurityKey.AutoSize = true;
+            this.lblSecurityKey.Location = new System.Drawing.Point(290, 26);
+            this.lblSecurityKey.Name = "lblSecurityKey";
+            this.lblSecurityKey.Size = new System.Drawing.Size(77, 17);
+            this.lblSecurityKey.TabIndex = 23;
+            this.lblSecurityKey.Text = "Security key";
             // 
-            // groupBox2
+            // combSecurityKey
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.combSecurityKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(19, 506);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(521, 98);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Management properties";
+            this.combSecurityKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combSecurityKey.FormattingEnabled = true;
+            this.combSecurityKey.Location = new System.Drawing.Point(293, 46);
+            this.combSecurityKey.Name = "combSecurityKey";
+            this.combSecurityKey.Size = new System.Drawing.Size(152, 25);
+            this.combSecurityKey.TabIndex = 22;
             // 
-            // textBox6
+            // lblSecurityLabel
             // 
-            this.textBox6.Location = new System.Drawing.Point(110, 62);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(203, 23);
-            this.textBox6.TabIndex = 22;
+            this.lblSecurityLabel.AutoSize = true;
+            this.lblSecurityLabel.Location = new System.Drawing.Point(107, 26);
+            this.lblSecurityLabel.Name = "lblSecurityLabel";
+            this.lblSecurityLabel.Size = new System.Drawing.Size(37, 17);
+            this.lblSecurityLabel.TabIndex = 21;
+            this.lblSecurityLabel.Text = "Level";
             // 
-            // label4
+            // combSecurityLevel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(17, 65);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 17);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Modify date";
+            this.combSecurityLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.combSecurityLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combSecurityLevel.FormattingEnabled = true;
+            this.combSecurityLevel.Location = new System.Drawing.Point(110, 46);
+            this.combSecurityLevel.Name = "combSecurityLevel";
+            this.combSecurityLevel.Size = new System.Drawing.Size(157, 25);
+            this.combSecurityLevel.TabIndex = 4;
             // 
-            // textBox5
+            // lblTokenLength
             // 
-            this.textBox5.Location = new System.Drawing.Point(110, 33);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(203, 23);
-            this.textBox5.TabIndex = 20;
+            this.lblTokenLength.AutoSize = true;
+            this.lblTokenLength.Location = new System.Drawing.Point(126, 208);
+            this.lblTokenLength.Name = "lblTokenLength";
+            this.lblTokenLength.Size = new System.Drawing.Size(98, 17);
+            this.lblTokenLength.TabIndex = 19;
+            this.lblTokenLength.Text = "Token length: 0";
             // 
-            // label3
+            // cboxShowOrHideToken
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 17);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Create date";
+            this.cboxShowOrHideToken.AutoSize = true;
+            this.cboxShowOrHideToken.Location = new System.Drawing.Point(129, 156);
+            this.cboxShowOrHideToken.Name = "cboxShowOrHideToken";
+            this.cboxShowOrHideToken.Size = new System.Drawing.Size(141, 21);
+            this.cboxShowOrHideToken.TabIndex = 5;
+            this.cboxShowOrHideToken.Text = "Show or hide token";
+            this.cboxShowOrHideToken.UseVisualStyleBackColor = true;
+            // 
+            // gboxManagementProperties
+            // 
+            this.gboxManagementProperties.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gboxManagementProperties.Controls.Add(this.tboxModifyDate);
+            this.gboxManagementProperties.Controls.Add(this.lblModifyDate);
+            this.gboxManagementProperties.Controls.Add(this.tboxCreateDate);
+            this.gboxManagementProperties.Controls.Add(this.lblCreateDate);
+            this.gboxManagementProperties.Location = new System.Drawing.Point(19, 465);
+            this.gboxManagementProperties.Name = "gboxManagementProperties";
+            this.gboxManagementProperties.Size = new System.Drawing.Size(521, 98);
+            this.gboxManagementProperties.TabIndex = 18;
+            this.gboxManagementProperties.TabStop = false;
+            this.gboxManagementProperties.Text = "Management properties";
+            // 
+            // tboxModifyDate
+            // 
+            this.tboxModifyDate.Location = new System.Drawing.Point(110, 62);
+            this.tboxModifyDate.Name = "tboxModifyDate";
+            this.tboxModifyDate.ReadOnly = true;
+            this.tboxModifyDate.Size = new System.Drawing.Size(157, 23);
+            this.tboxModifyDate.TabIndex = 22;
+            // 
+            // lblModifyDate
+            // 
+            this.lblModifyDate.AutoSize = true;
+            this.lblModifyDate.Location = new System.Drawing.Point(17, 65);
+            this.lblModifyDate.Name = "lblModifyDate";
+            this.lblModifyDate.Size = new System.Drawing.Size(79, 17);
+            this.lblModifyDate.TabIndex = 21;
+            this.lblModifyDate.Text = "Modify date";
+            // 
+            // tboxCreateDate
+            // 
+            this.tboxCreateDate.Location = new System.Drawing.Point(110, 33);
+            this.tboxCreateDate.Name = "tboxCreateDate";
+            this.tboxCreateDate.ReadOnly = true;
+            this.tboxCreateDate.Size = new System.Drawing.Size(157, 23);
+            this.tboxCreateDate.TabIndex = 20;
+            // 
+            // lblCreateDate
+            // 
+            this.lblCreateDate.AutoSize = true;
+            this.lblCreateDate.Location = new System.Drawing.Point(22, 36);
+            this.lblCreateDate.Name = "lblCreateDate";
+            this.lblCreateDate.Size = new System.Drawing.Size(76, 17);
+            this.lblCreateDate.TabIndex = 19;
+            this.lblCreateDate.Text = "Create date";
             // 
             // lnkGenerateToken
             // 
@@ -174,65 +227,54 @@ namespace TokenRepository.Client
             this.lnkGenerateToken.Text = "Generate...";
             this.lnkGenerateToken.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkGenerateToken_LinkClicked);
             // 
-            // textBox4
+            // tboxRemark
             // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tboxRemark.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Location = new System.Drawing.Point(129, 364);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(335, 136);
-            this.textBox4.TabIndex = 17;
+            this.tboxRemark.Location = new System.Drawing.Point(129, 364);
+            this.tboxRemark.Multiline = true;
+            this.tboxRemark.Name = "tboxRemark";
+            this.tboxRemark.Size = new System.Drawing.Size(335, 93);
+            this.tboxRemark.TabIndex = 17;
             // 
-            // textBox3
+            // tboxPrompt
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tboxPrompt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(129, 335);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(335, 23);
-            this.textBox3.TabIndex = 15;
+            this.tboxPrompt.Location = new System.Drawing.Point(129, 335);
+            this.tboxPrompt.Name = "tboxPrompt";
+            this.tboxPrompt.Size = new System.Drawing.Size(335, 23);
+            this.tboxPrompt.TabIndex = 15;
             // 
-            // textBox2
+            // tboxToken
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tboxToken.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.textBox2.Location = new System.Drawing.Point(129, 182);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '※';
-            this.textBox2.Size = new System.Drawing.Size(335, 23);
-            this.textBox2.TabIndex = 7;
+            this.tboxToken.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.tboxToken.Location = new System.Drawing.Point(129, 182);
+            this.tboxToken.Name = "tboxToken";
+            this.tboxToken.PasswordChar = '※';
+            this.tboxToken.Size = new System.Drawing.Size(335, 23);
+            this.tboxToken.TabIndex = 7;
             // 
-            // combSecurityLevel
+            // tboxTokenID
             // 
-            this.combSecurityLevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tboxTokenID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.combSecurityLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combSecurityLevel.FormattingEnabled = true;
-            this.combSecurityLevel.Location = new System.Drawing.Point(110, 46);
-            this.combSecurityLevel.Name = "combSecurityLevel";
-            this.combSecurityLevel.Size = new System.Drawing.Size(157, 25);
-            this.combSecurityLevel.TabIndex = 4;
+            this.tboxTokenID.BackColor = System.Drawing.SystemColors.Info;
+            this.tboxTokenID.Location = new System.Drawing.Point(129, 31);
+            this.tboxTokenID.Name = "tboxTokenID";
+            this.tboxTokenID.Size = new System.Drawing.Size(335, 23);
+            this.tboxTokenID.TabIndex = 2;
             // 
-            // textBox1
+            // lblRemark
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.textBox1.Location = new System.Drawing.Point(129, 31);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(335, 23);
-            this.textBox1.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 367);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 17);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Remark";
+            this.lblRemark.AutoSize = true;
+            this.lblRemark.Location = new System.Drawing.Point(64, 367);
+            this.lblRemark.Name = "lblRemark";
+            this.lblRemark.Size = new System.Drawing.Size(53, 17);
+            this.lblRemark.TabIndex = 16;
+            this.lblRemark.Text = "Remark";
             // 
             // lblTokenIDCaption
             // 
@@ -261,20 +303,20 @@ namespace TokenRepository.Client
             this.lblRemarkCaption.TabIndex = 14;
             this.lblRemarkCaption.Text = "Prompt";
             // 
-            // groupBox1
+            // gboxTokenControlStrategy
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.gboxTokenControlStrategy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.dtpickerEnabledTime);
-            this.groupBox1.Controls.Add(this.dtpickerEnabledDate);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cboxEnabledDateControlStrategy);
-            this.groupBox1.Location = new System.Drawing.Point(19, 241);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(521, 83);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Token control strategy";
+            this.gboxTokenControlStrategy.Controls.Add(this.dtpickerEnabledTime);
+            this.gboxTokenControlStrategy.Controls.Add(this.dtpickerEnabledDate);
+            this.gboxTokenControlStrategy.Controls.Add(this.lblEnabledDate);
+            this.gboxTokenControlStrategy.Controls.Add(this.cboxEnabledDateControlStrategy);
+            this.gboxTokenControlStrategy.Location = new System.Drawing.Point(19, 241);
+            this.gboxTokenControlStrategy.Name = "gboxTokenControlStrategy";
+            this.gboxTokenControlStrategy.Size = new System.Drawing.Size(521, 83);
+            this.gboxTokenControlStrategy.TabIndex = 9;
+            this.gboxTokenControlStrategy.TabStop = false;
+            this.gboxTokenControlStrategy.Text = "Token control strategy";
             // 
             // dtpickerEnabledTime
             // 
@@ -294,14 +336,14 @@ namespace TokenRepository.Client
             this.dtpickerEnabledDate.Size = new System.Drawing.Size(110, 23);
             this.dtpickerEnabledDate.TabIndex = 12;
             // 
-            // label2
+            // lblEnabledDate
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 17);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Enabled date";
+            this.lblEnabledDate.AutoSize = true;
+            this.lblEnabledDate.Location = new System.Drawing.Point(12, 52);
+            this.lblEnabledDate.Name = "lblEnabledDate";
+            this.lblEnabledDate.Size = new System.Drawing.Size(85, 17);
+            this.lblEnabledDate.TabIndex = 11;
+            this.lblEnabledDate.Text = "Enabled date";
             // 
             // cboxEnabledDateControlStrategy
             // 
@@ -317,7 +359,7 @@ namespace TokenRepository.Client
             // btnConfirm
             // 
             this.btnConfirm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnConfirm.Location = new System.Drawing.Point(386, 637);
+            this.btnConfirm.Location = new System.Drawing.Point(386, 596);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(86, 27);
             this.btnConfirm.TabIndex = 23;
@@ -327,7 +369,7 @@ namespace TokenRepository.Client
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(481, 637);
+            this.btnExit.Location = new System.Drawing.Point(481, 596);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(86, 27);
             this.btnExit.TabIndex = 24;
@@ -335,53 +377,11 @@ namespace TokenRepository.Client
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.combSecurityLevel);
-            this.groupBox3.Location = new System.Drawing.Point(19, 60);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(521, 90);
-            this.groupBox3.TabIndex = 20;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Security strategy";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(107, 26);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 17);
-            this.label6.TabIndex = 21;
-            this.label6.Text = "Level";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(293, 46);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(152, 25);
-            this.comboBox1.TabIndex = 22;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(290, 26);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 17);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Security key";
-            // 
             // TokenDocumentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 674);
+            this.ClientSize = new System.Drawing.Size(578, 633);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.gboxMaintainMetadata);
@@ -397,13 +397,13 @@ namespace TokenRepository.Client
             this.Load += new System.EventHandler(this.TokenDocumentForm_Load);
             this.gboxMaintainMetadata.ResumeLayout(false);
             this.gboxMaintainMetadata.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gboxSecurityStrategy.ResumeLayout(false);
+            this.gboxSecurityStrategy.PerformLayout();
+            this.gboxManagementProperties.ResumeLayout(false);
+            this.gboxManagementProperties.PerformLayout();
+            this.gboxTokenControlStrategy.ResumeLayout(false);
+            this.gboxTokenControlStrategy.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.databinding)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -414,31 +414,31 @@ namespace TokenRepository.Client
         private System.Windows.Forms.Label lblTokenIDCaption;
         private System.Windows.Forms.Label lblTokenCaption;
         private System.Windows.Forms.Label lblRemarkCaption;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label lblRemark;
+        private System.Windows.Forms.TextBox tboxRemark;
+        private System.Windows.Forms.TextBox tboxPrompt;
         private System.Windows.Forms.CheckBox cboxEnabledDateControlStrategy;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tboxToken;
         private System.Windows.Forms.ComboBox combSecurityLevel;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tboxTokenID;
         private System.Windows.Forms.LinkLabel lnkGenerateToken;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox gboxTokenControlStrategy;
         private System.Windows.Forms.DateTimePicker dtpickerEnabledDate;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblEnabledDate;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox gboxManagementProperties;
+        private System.Windows.Forms.TextBox tboxModifyDate;
+        private System.Windows.Forms.Label lblModifyDate;
+        private System.Windows.Forms.TextBox tboxCreateDate;
+        private System.Windows.Forms.Label lblCreateDate;
         private System.Windows.Forms.DateTimePicker dtpickerEnabledTime;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox cboxShowOrHideToken;
         private System.Windows.Forms.BindingSource databinding;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblTokenLength;
+        private System.Windows.Forms.GroupBox gboxSecurityStrategy;
+        private System.Windows.Forms.Label lblSecurityKey;
+        private System.Windows.Forms.ComboBox combSecurityKey;
+        private System.Windows.Forms.Label lblSecurityLabel;
     }
 }

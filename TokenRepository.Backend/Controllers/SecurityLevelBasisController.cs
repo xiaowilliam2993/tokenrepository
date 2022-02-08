@@ -41,7 +41,7 @@ namespace TokenRepository.Backend.Controllers
 
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Success,
+                    Status = ApiStatus.Success,
                     Data = data
                 };
             }
@@ -50,7 +50,7 @@ namespace TokenRepository.Backend.Controllers
                 _logger.LogError(ex, $"Get SecurityLevelBasis has an occurs error: {ex.Message}");
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Error,
+                    Status = ApiStatus.Error,
                     Message = ex.Message
                 };
             }
@@ -61,14 +61,18 @@ namespace TokenRepository.Backend.Controllers
         {
             try
             {
-                var data = _dbContext.SecurityLevelBasis
-                    .Select(_ => _.SecurityLevel)
-                    .Distinct()
-                    .OrderBy(_ => _);
+                var data = _dbContext.SecurityLevelBasis.ToArray()
+                    .GroupBy(_ => _.SecurityLevel)
+                    .Select(g => new
+                    {
+                        SecurityLevel = g.Key,
+                        SecurityKeys = g.Select(_ => _.SecurityKey)
+                    })
+                    .OrderBy(_ => _.SecurityLevel);
 
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Success,
+                    Status = ApiStatus.Success,
                     Data = data
                 };
             }
@@ -77,26 +81,28 @@ namespace TokenRepository.Backend.Controllers
                 _logger.LogError(ex, $"Get security level has an occurs error: {ex.Message}");
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Error,
+                    Status = ApiStatus.Error,
                     Message = ex.Message
                 };
             }
         }
 
-        [HttpGet("{securityLevel}")]
+        [HttpGet("getSecurityKey/{securityLevel}")]
         public ApiContext GetSecurityKey(int securityLevel)
         {
             try
             {
                 var data = _dbContext.SecurityLevelBasis
-                    .Where(_ => _.SecurityLevel == securityLevel)
-                    .Select(_ => _.SecurityKey)
-                    .OrderBy(_ => _);
+                    .Where(_ => _.SecurityLevel == securityLevel).ToArray();
 
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Success,
-                    Data = data
+                    Status = ApiStatus.Success,
+                    Data = data.Select(_ => new
+                    {
+                        _.SecurityKey,
+                        _.IsValid
+                    }).OrderBy(_ => _.SecurityKey)
                 };
             }
             catch(Exception ex)
@@ -104,7 +110,7 @@ namespace TokenRepository.Backend.Controllers
                 _logger.LogError(ex, $"Get SecurityKey has an occurs error: {ex.Message}");
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Error,
+                    Status = ApiStatus.Error,
                     Message = ex.Message
                 };
             }

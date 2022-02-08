@@ -37,7 +37,7 @@ namespace TokenRepository.Backend.Controllers
 
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Success,
+                    Status = ApiStatus.Success,
                     Data = _tokenBasisService.ToCollection(data)
                 };
             }
@@ -47,7 +47,7 @@ namespace TokenRepository.Backend.Controllers
 
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Error,
+                    Status = ApiStatus.Error,
                     Message = ex.Message
                 };
             }
@@ -69,7 +69,7 @@ namespace TokenRepository.Backend.Controllers
 
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Success,
+                    Status = ApiStatus.Success,
                     Data = _tokenBasisService.ToCollection(data, ConvertUtil.ToBoolean(isNeedDecrypt))
                 };
             }
@@ -79,7 +79,7 @@ namespace TokenRepository.Backend.Controllers
 
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Error,
+                    Status = ApiStatus.Error,
                     Message = ex.Message
                 };
             }
@@ -109,16 +109,16 @@ namespace TokenRepository.Backend.Controllers
 
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Success,
+                    Status = ApiStatus.Success,
                     Data = existenceItem
                 };
             }
             catch (Exception ex)
             {
-                _logger.LogError("Post TokenBasis occurs an error.", ex);
+                _logger.LogError(ex, $"Post TokenBasis occurs an error: {ex.Message}");
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Error,
+                    Status = ApiStatus.Error,
                     Message = ex.Message
                 };
             }
@@ -155,16 +155,16 @@ namespace TokenRepository.Backend.Controllers
                 }
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Success,
+                    Status = ApiStatus.Success,
                     Data = existenceToken
                 };
             }
             catch (Exception ex)
             {
-                _logger.LogError("Put TokenBasis occurs an error.", ex);
+                _logger.LogError(ex, $"Put TokenBasis occurs an error: {ex.Message}");
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Error,
+                    Status = ApiStatus.Error,
                     Message = ex.Message
                 };
             }
@@ -192,16 +192,16 @@ namespace TokenRepository.Backend.Controllers
 
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Success,
+                    Status = ApiStatus.Success,
                     Message = "Delete TokenBasis successfully."
                 };
             }
             catch(Exception ex)
             {
-                _logger.LogError("Delete TokenBasis occurs an error.", ex);
+                _logger.LogError(ex, $"Delete TokenBasis occurs an error: {ex.Message}");
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Error,
+                    Status = ApiStatus.Error,
                     Message = ex.Message
                 };
             }
@@ -237,15 +237,16 @@ namespace TokenRepository.Backend.Controllers
 
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Success,
+                    Status = ApiStatus.Success,
                     Data = new string(token)
                 };
             }
             catch(Exception ex)
             {
+                _logger.LogError(ex, $"Get new token has occurs an error: {ex.Message}");
                 return new ApiContext
                 {
-                    Status = ReturnStatus.Error,
+                    Status = ApiStatus.Error,
                     Message = ex.Message
                 };
             }

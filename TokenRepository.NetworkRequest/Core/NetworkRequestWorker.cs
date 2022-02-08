@@ -74,9 +74,9 @@ namespace TokenRepository.NetworkRequest.Core
         /// <param name="body"></param>
         /// <param name="httpMethod"></param>
         /// <param name="headerParameters"></param>
-        /// <param name="isNeedCompression">标记是否要求压缩上传请求Body</param>
+        /// <param name="isNeedCompress">标记是否要求压缩上传请求Body</param>
         /// <returns></returns>
-        public static async Task<HttpResponseMessage> SendAsync(string url, dynamic body, HttpMethod httpMethod, IDictionary<string, string> headerParameters = null, bool isNeedCompression = false)
+        public static async Task<HttpResponseMessage> SendAsync(string url, dynamic body, HttpMethod httpMethod, IDictionary<string, string> headerParameters = null, bool isNeedCompress = false)
         {
             if (string.IsNullOrWhiteSpace(url)) throw new ArgumentNullException(nameof(url));
             if (httpMethod == null) throw new ArgumentNullException(nameof(httpMethod));
@@ -99,7 +99,7 @@ namespace TokenRepository.NetworkRequest.Core
                     if (httpMethod != HttpMethod.Get && body != null)
                     {
                         HttpContent httpContent = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
-                        httpRequestMessage.Content = isNeedCompression ? new CompressedContent(httpContent, CompressionMethod.GZip) : httpContent;
+                        httpRequestMessage.Content = isNeedCompress ? new CompressedContent(httpContent, CompressionMethod.GZip) : httpContent;
                     }
                     return await httpClient.SendAsync(httpRequestMessage);
                 }

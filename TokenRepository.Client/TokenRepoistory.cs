@@ -1,12 +1,7 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Linq;
+﻿using System;
 using System.Windows.Forms;
 using TokenRepository.Client.Models;
 using TokenRepository.Client.Utility;
-using TokenRepository.NetworkRequest.Core;
-using TokenRepository.NetworkRequest.Models;
 
 namespace TokenRepository.Client
 {
@@ -76,34 +71,14 @@ namespace TokenRepository.Client
                 return;
             }
 
-            var apiResponse = NetworkRequestWorker.Get($"{ConfigUtil.GetApiHost}/api/v1/tokenBasis/{queryID}");
-            if (apiResponse.IsSuccessStatusCode)
+            try
             {
-                var apiContext = apiResponse.GetResultAsGeneric<ApiContext>();
-                if (apiContext.Status == ReturnStatus.Success)
-                {
-                    var data = (JArray)apiContext.Data;
-                    if (data.Count > 0)
-                    {
-                        QueryEntry = JsonConvert.DeserializeObject<TokenBasis>(data.First()?.ToString());
-                        databinding.DataSource = QueryEntry;
-                    }
-                    else
-                    {
-                        //查不到数据
-
-                    }
-                }
-                else
-                {
-                    //处理API内部请求错误
-
-                }
+                QueryEntry = NetworkUtil.Get<TokenBasis>($"{ConfigUtil.GetApiHost}/api/v1/tokenBasis/{queryID}/yes");
+                databinding.DataSource = QueryEntry;
             }
-            else
+            catch(Exception ex)
             {
-                //处理网络请求异常
-
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -21,7 +21,7 @@ namespace TokenRepository.Client.Models
         }
         public string TokenSecurityDisplayValue { get; set; }
         public string SecurityKey { get; set; }
-        public IEnumerable<string> SecurityLevels { get; set; }
+        public string[] SecurityLevels { get; set; }
         public bool? IsEnabledOfDateTurnOn { get; set; }
         public string EnabledDateControlStrategyDisplayValue
         {
